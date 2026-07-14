@@ -15,6 +15,14 @@ class AppTypography {
     color: AppColors.neutral900,
   );
 
+  static const TextStyle h3Bold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    height: 26 / 18,
+    color: AppColors.neutral900,
+  );
+
   static const TextStyle h4SemiBold = TextStyle(
     fontFamily: fontFamily,
     fontSize: 16,
@@ -78,5 +86,13 @@ class AppTypography {
     fontStyle: FontStyle.italic,
     height: 16 / 16,
     color: Color(0xFFFFEE00),
+  );
+
+  static const TextStyle logoWordmark = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 52,
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.italic,
+    color: AppColors.logoWordmark,
   );
 }

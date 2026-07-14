@@ -1,38 +1,28 @@
 import 'package:flutter/material.dart';
-import '../../config/app_colors.dart';
-import '../../config/app_typography.dart';
+import '../../../../config/app_colors.dart';
+import '../../../../config/app_typography.dart';
 
-enum AppButtonVariant { primary, secondary }
-
-class AppButton extends StatelessWidget {
+class OnboardingActionButton extends StatelessWidget {
   final String label;
-  final VoidCallback? onPressed;
-  final AppButtonVariant variant;
-  final double height;
+  final VoidCallback onPressed;
+  final bool isPrimary;
 
-  const AppButton({
+  const OnboardingActionButton({
     super.key,
     required this.label,
     required this.onPressed,
-    this.variant = AppButtonVariant.primary,
-    this.height = 44,
+    this.isPrimary = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    final bool isPrimary = variant == AppButtonVariant.primary;
-
     return SizedBox(
-      height: height,
-      width: double.infinity,
+      height: 44,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor:
               isPrimary ? AppColors.accent : AppColors.secondaryButtonFill,
-          disabledBackgroundColor: isPrimary
-              ? AppColors.accent.withOpacity(0.4)
-              : AppColors.secondaryButtonFill,
           elevation: 0,
           side: BorderSide(
             color: isPrimary ? AppColors.buttonGlassBorder : AppColors.primary,
@@ -45,6 +35,7 @@ class AppButton extends StatelessWidget {
           label,
           style: AppTypography.bodyLargeMedium.copyWith(
             color: isPrimary ? AppColors.white : AppColors.primary,
+            height: 24 / 14,
           ),
         ),
       ),

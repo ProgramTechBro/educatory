@@ -28,13 +28,22 @@ class AppColors {
   static const List<Color> gradientGreen = [Color(0xFF166534), Color(0xFF22C55E)];
   static const List<Color> gradientGolden = [Color(0xFFCC6002), Color(0xFFFFB532)];
   static const List<Color> gradientIndigo = [Color(0xFF3032A3), Color(0xFF6366F1)];
+  static const List<Color> gradientSplashBackground = [Color(0xFFF9F5FF), Color(0xFFD4B4FE)];
+  static const List<Color> gradientOnboardingPanel = [white, purple100];
 
   static const Color chatTimeColor = neutral500;
+  static const Color logoWordmark = Color(0xFF131842);
+  static const Color secondaryButtonFill = Color(0xFFEEE0FF);
+  static const Color buttonGlassBorder = Color(0x5CFFFFFF);
+  static const Color bannerText = Color(0xFF56012D);
 
   static List<BoxShadow> inputDropShadow = [
     BoxShadow(color: const Color(0x14344054), offset: const Offset(0, 1), blurRadius: 2),
   ];
   static List<BoxShadow> cardShadow = [
     BoxShadow(color: Colors.black.withOpacity(0.08), offset: const Offset(0, 1), blurRadius: 1),
+  ];
+  static List<BoxShadow> otpFocusShadow = [
+    BoxShadow(color: primary.withOpacity(0.08), offset: const Offset(0, 2), blurRadius: 10),
   ];
 }

@@ -1,7 +1,95 @@
 import 'package:go_router/go_router.dart';
+import '../features/auth/domain/entities/auth_mode.dart';
+import '../features/auth/domain/entities/otp_purpose.dart';
+import '../features/auth/presentation/congrats_screen.dart';
+import '../features/auth/presentation/education_screen.dart';
+import '../features/auth/presentation/full_name_email_screen.dart';
+import '../features/auth/presentation/otp_verification_screen.dart';
+import '../features/auth/presentation/phone_auth_screen.dart';
+import '../features/auth/presentation/reset_password_screen.dart';
+import '../features/auth/presentation/role_selection_screen.dart';
+import '../features/auth/presentation/set_new_password_screen.dart';
+import '../features/auth/presentation/upload_photo_screen.dart';
+import '../features/home/presentation/home_screen.dart';
+import '../features/onboarding/presentation/onboarding_screen.dart';
+import '../features/splash/presentation/splash_screen.dart';
+import 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static final GoRouter router = GoRouter(routes: const []);
+  static final GoRouter router = GoRouter(
+    initialLocation: AppRoutes.splash,
+    routes: [
+      GoRoute(
+        path: AppRoutes.splash,
+        builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.onboarding,
+        builder: (context, state) => const OnboardingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.roleSelection,
+        builder: (context, state) => const RoleSelectionScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.registerPhone,
+        builder: (context, state) =>
+            const PhoneAuthScreen(mode: AuthMode.register),
+      ),
+      GoRoute(
+        path: AppRoutes.registerOtp,
+        builder: (context, state) => _buildOtpScreen(state),
+      ),
+      GoRoute(
+        path: AppRoutes.registerNameEmail,
+        builder: (context, state) => const FullNameEmailScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.registerEducation,
+        builder: (context, state) => const EducationScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.registerPhoto,
+        builder: (context, state) => const UploadPhotoScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.registerCongrats,
+        builder: (context, state) => const CongratsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.loginPhone,
+        builder: (context, state) => const PhoneAuthScreen(mode: AuthMode.login),
+      ),
+      GoRoute(
+        path: AppRoutes.loginOtp,
+        builder: (context, state) => _buildOtpScreen(state),
+      ),
+      GoRoute(
+        path: AppRoutes.resetPassword,
+        builder: (context, state) => const ResetPasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.resetPasswordOtp,
+        builder: (context, state) => _buildOtpScreen(state),
+      ),
+      GoRoute(
+        path: AppRoutes.resetPasswordNew,
+        builder: (context, state) => const SetNewPasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.home,
+        builder: (context, state) => HomeScreen(),
+      ),
+    ],
+  );
+
+  static OtpVerificationScreen _buildOtpScreen(GoRouterState state) {
+    final extra = state.extra as Map<String, dynamic>?;
+    return OtpVerificationScreen(
+      purpose: extra?['purpose'] as OtpPurpose? ?? OtpPurpose.register,
+      phone: extra?['phone'] as String? ?? '555-0113',
+    );
+  }
 }
