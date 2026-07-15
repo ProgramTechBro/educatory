@@ -51,8 +51,8 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                 children: [
                   Expanded(
                     child: RoleOptionCard(
-                      imageUrl: AppNetworkImages.teacherRole,
-                      label: 'As a Teacher',
+                      iconAsset: AppIcons.teacherIllustration,
+                      label: 'Teacher',
                       isSelected: _selectedRole == UserRole.teacher,
                       onTap: () =>
                           setState(() => _selectedRole = UserRole.teacher),
@@ -61,8 +61,8 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                   const SizedBox(width: 16),
                   Expanded(
                     child: RoleOptionCard(
-                      imageUrl: AppNetworkImages.studentRole,
-                      label: 'As a Student',
+                      iconAsset: AppIcons.studentIllustration,
+                      label: 'Student',
                       isSelected: _selectedRole == UserRole.student,
                       onTap: () =>
                           setState(() => _selectedRole = UserRole.student),

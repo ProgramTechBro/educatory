@@ -1,12 +1,13 @@
 import 'package:equatable/equatable.dart';
-import '../../enums/request_status.dart';
+
+enum AuthStatus { unknown, firstLaunch, returningUser }
 
 class AuthState extends Equatable {
-  final RequestStatus status;
+  final AuthStatus status;
 
-  const AuthState({this.status = RequestStatus.initial});
+  const AuthState({this.status = AuthStatus.unknown});
 
-  AuthState copyWith({RequestStatus? status}) {
+  AuthState copyWith({AuthStatus? status}) {
     return AuthState(status: status ?? this.status);
   }
 

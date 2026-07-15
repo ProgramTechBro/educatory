@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
 
 class RoleOptionCard extends StatelessWidget {
-  final String imageUrl;
+  final String iconAsset;
   final String label;
   final bool isSelected;
   final VoidCallback onTap;
 
   const RoleOptionCard({
     super.key,
-    required this.imageUrl,
+    required this.iconAsset,
     required this.label,
     required this.isSelected,
     required this.onTap,
@@ -21,13 +21,13 @@ class RoleOptionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(20),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.secondaryButtonFill : AppColors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: isSelected ? AppColors.primary : AppColors.neutral300,
             width: isSelected ? 2 : 1,
@@ -38,37 +38,47 @@ class RoleOptionCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Stack(
-              alignment: Alignment.topRight,
+              clipBehavior: Clip.none,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: CachedNetworkImage(
-                    imageUrl: imageUrl,
-                    height: 100,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
+                Container(
+                  height: 120,
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppColors.purple100,
+                    borderRadius: BorderRadius.circular(14),
                   ),
+                  child: SvgPicture.asset(iconAsset, fit: BoxFit.contain),
                 ),
                 if (isSelected)
-                  Container(
-                    margin: const EdgeInsets.all(6),
-                    padding: const EdgeInsets.all(2),
-                    decoration: const BoxDecoration(
-                      color: AppColors.primary,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.check,
-                      size: 14,
-                      color: AppColors.white,
+                  Positioned(
+                    top: -6,
+                    right: -6,
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: const BoxDecoration(
+                        color: AppColors.primary,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x33000000),
+                            blurRadius: 4,
+                          ),
+                        ],
+                      ),
+                      child: const Icon(
+                        Icons.check,
+                        size: 14,
+                        color: AppColors.white,
+                      ),
                     ),
                   ),
               ],
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
             Text(
               label,
-              style: AppTypography.bodyLargeSemiBold.copyWith(
+              style: AppTypography.h4SemiBold.copyWith(
                 color: isSelected ? AppColors.primary : AppColors.neutral900,
               ),
             ),

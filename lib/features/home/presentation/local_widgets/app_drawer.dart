@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../config/app_assets.dart';
 import '../../../../config/app_colors.dart';
@@ -63,8 +64,8 @@ class AppDrawer extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ClipOval(
-                  child: Image.asset(
-                    AppImages.tutorMuhammad,
+                  child: CachedNetworkImage(
+                    imageUrl: AppNetworkImages.currentUserAvatar,
                     width: 72,
                     height: 72,
                     fit: BoxFit.cover,
