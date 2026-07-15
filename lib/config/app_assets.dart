@@ -23,9 +23,19 @@ class AppImages {
       '${_base}course_public_speaking.jpg';
   static const String courseCooking = '${_base}course_cooking.jpg';
   static const String courseCreativeWriting =
-      '${_base}course_content_writing.png';
+      '${_base}course_content_writting.png';
   static const String coursePersonalFinance =
       '${_base}course_personal_finance.jpg';
+
+  static const String resultCourseJavascript = '${_base}javascript_course.jpg';
+  static const String resultCoursePython =
+      '${_base}python_programming_course.jpg';
+  static const String resultCourseHtmlCss =
+      '${_base}responsive_website_course.jpg';
+  static const String resultCourseAlgorithms =
+      '${_base}advance_algorithm_course.jpg';
+  static const String resultCourseMobileApp =
+      '${_base}mobile_app_development.png';
 }
 
 class AppIcons {
@@ -57,4 +67,11 @@ class AppNetworkImages {
   static const String tutorJane = 'https://i.pravatar.cc/150?img=25';
   static const String tutorJulia = 'https://i.pravatar.cc/150?img=32';
   static const String currentUserAvatar = 'https://i.pravatar.cc/150?img=8';
+
+  static const String resultTutorEleanor = 'https://i.pravatar.cc/150?img=5';
+  static const String resultTutorRobert = 'https://i.pravatar.cc/150?img=7';
+  static const String resultTutorDianne = 'https://i.pravatar.cc/150?img=9';
+  static const String resultTutorGuy = 'https://i.pravatar.cc/150?img=15';
+  static const String resultTutorJulia = 'https://i.pravatar.cc/150?img=20';
+  static const String resultTutorAlbert = 'https://i.pravatar.cc/150?img=33';
 }

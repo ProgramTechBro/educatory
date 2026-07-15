@@ -21,4 +21,7 @@ class AppRoutes {
   static const String resetPasswordNew = '/reset-password/new';
 
   static const String home = '/home';
+
+  static const String filter = '/filter';
+  static const String filteredResults = '/filtered-results';
 }

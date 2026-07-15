@@ -1,6 +1,6 @@
 import '../../../../config/app_assets.dart';
 import '../../../../config/app_colors.dart';
-import '../../domain/entities/course_entity.dart';
+import '../../../courses/domain/entities/course_entity.dart';
 import '../../domain/entities/live_subject_entity.dart';
 import '../../domain/entities/tutor_entity.dart';
 

@@ -75,12 +75,14 @@ class _CongratsScreenState extends State<CongratsScreen> {
                 const SizedBox(height: 48),
                 Text('Congrats!', style: AppTypography.h3Bold),
                 const SizedBox(height: 8),
-                Text(
-                  'You have signed up successfully. Go to home & '
-                  'start exploring courses',
-                  textAlign: TextAlign.center,
-                  style: AppTypography.bodyLargeRegular.copyWith(
-                    color: AppColors.neutral600,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                  child: Text(
+                    'You have signed up successfully. Go to home & start exploring courses',
+                    textAlign: TextAlign.center,
+                    style: AppTypography.bodyLargeRegular.copyWith(
+                      color: AppColors.neutral600,
+                    ),
                   ),
                 ),
               ],

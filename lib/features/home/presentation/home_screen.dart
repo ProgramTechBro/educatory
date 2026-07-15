@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../config/app_colors.dart';
+import '../../../routes/app_routes.dart';
+import '../../courses/domain/entities/search_target.dart';
 import '../data/datasources/home_local_datasource.dart';
 import 'local_widgets/app_drawer.dart';
 import 'local_widgets/course_card.dart';
@@ -46,14 +49,26 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: const HomeSearchField(),
+                      child: HomeSearchField(
+                        onFilterTap: () => context.push(
+                          AppRoutes.filter,
+                          extra: SearchTarget.courses,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: const SectionTitle(
+                      child: SectionTitle(
                         title: 'Live Subject Tutoring',
                         actionLabel: 'All Subjects',
+                        onActionTap: () => context.push(
+                          AppRoutes.filteredResults,
+                          extra: {
+                            'target': SearchTarget.tutors,
+                            'filterCount': 0,
+                          },
+                        ),
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -78,9 +93,16 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: const SectionTitle(
+                      child: SectionTitle(
                         title: 'Trending Courses',
                         actionLabel: 'All Courses',
+                        onActionTap: () => context.push(
+                          AppRoutes.filteredResults,
+                          extra: {
+                            'target': SearchTarget.courses,
+                            'filterCount': 0,
+                          },
+                        ),
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -117,9 +139,16 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: const SectionTitle(
+                      child: SectionTitle(
                         title: 'Top New Courses',
                         actionLabel: 'All Courses',
+                        onActionTap: () => context.push(
+                          AppRoutes.filteredResults,
+                          extra: {
+                            'target': SearchTarget.courses,
+                            'filterCount': 0,
+                          },
+                        ),
                       ),
                     ),
                     const SizedBox(height: 12),
