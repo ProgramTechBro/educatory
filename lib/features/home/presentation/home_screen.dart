@@ -106,7 +106,11 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           for (final course in trendingCourses) ...[
-                            CourseCard(course: course, onTap: () {}),
+                            CourseCard(
+                              course: course,
+                              onTap: () =>
+                                  context.push(AppRoutes.courseDetail),
+                            ),
                             const SizedBox(width: 16),
                           ],
                         ],
@@ -146,7 +150,11 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           for (final course in topNewCourses) ...[
-                            CourseCard(course: course, onTap: () {}),
+                            CourseCard(
+                              course: course,
+                              onTap: () =>
+                                  context.push(AppRoutes.courseDetail),
+                            ),
                             const SizedBox(width: 16),
                           ],
                         ],

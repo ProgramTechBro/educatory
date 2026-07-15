@@ -64,7 +64,7 @@ class FilteredResultsScreen extends StatelessWidget {
               if (isTutors)
                 ..._buildTutorResults(dataSource)
               else
-                ..._buildCourseResults(dataSource),
+                ..._buildCourseResults(context, dataSource),
             ],
           ),
         ),
@@ -82,13 +82,19 @@ class FilteredResultsScreen extends StatelessWidget {
     ];
   }
 
-  List<Widget> _buildCourseResults(CoursesLocalDataSource dataSource) {
+  List<Widget> _buildCourseResults(
+    BuildContext context,
+    CoursesLocalDataSource dataSource,
+  ) {
     final courses = dataSource.getFilteredCourses();
     return [
       Text('All Courses', style: AppTypography.h4SemiBold),
       const SizedBox(height: 12),
       for (final course in courses) ...[
-        FilteredCourseCard(course: course, onTap: () {}),
+        FilteredCourseCard(
+          course: course,
+          onTap: () => context.push(AppRoutes.courseDetail),
+        ),
         if (course != courses.last) const SizedBox(height: 16),
       ],
     ];

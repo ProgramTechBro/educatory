@@ -57,6 +57,8 @@ class AppIcons {
   static const String subjectPhysics = '${_base}subject_physics.svg';
   static const String subjectComputerScience =
       '${_base}subject_computer_science.svg';
+
+  static const String paypal = '${_base}paypal.svg';
 }
 
 class AppNetworkImages {

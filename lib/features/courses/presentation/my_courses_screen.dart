@@ -3,16 +3,35 @@ import 'package:go_router/go_router.dart';
 import '../../../config/app_colors.dart';
 import '../../../config/app_typography.dart';
 import '../../../routes/app_routes.dart';
-import '../../home/presentation/local_widgets/home_search_field.dart';
-import '../data/datasources/courses_local_datasource.dart';
-import 'local_widgets/filtered_course_card.dart';
+import '../data/datasources/my_courses_local_datasource.dart';
+import 'local_widgets/enrolled_course_card.dart';
+import 'local_widgets/rate_course_sheet.dart';
 
-class AllCoursesScreen extends StatelessWidget {
-  const AllCoursesScreen({super.key});
+class MyCoursesScreen extends StatelessWidget {
+  const MyCoursesScreen({super.key});
+
+  void _handleAction(
+    BuildContext context,
+    EnrolledCourseAction action,
+  ) {
+    switch (action) {
+      case EnrolledCourseAction.playNow:
+        context.push(AppRoutes.playingCourse);
+        break;
+      case EnrolledCourseAction.rateCourse:
+        RateCourseSheet.show(context);
+        break;
+      case EnrolledCourseAction.report:
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Course reported')),
+        );
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final courses = CoursesLocalDataSource().getAllCourses();
+    final courses = MyCoursesLocalDataSource().getEnrolledCourses();
 
     return Scaffold(
       backgroundColor: AppColors.pageBackground,
@@ -28,7 +47,7 @@ class AllCoursesScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          'All Courses',
+          'My Courses',
           style: AppTypography.h4Medium.copyWith(fontWeight: FontWeight.w400),
         ),
       ),
@@ -44,18 +63,17 @@ class AllCoursesScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HomeSearchField(
-                onFilterTap: () => context.push(AppRoutes.filter),
-              ),
-              const SizedBox(height: 20),
-              Text('All Courses', style: AppTypography.h4SemiBold),
-              const SizedBox(height: 12),
               for (final course in courses) ...[
-                FilteredCourseCard(
+                EnrolledCourseCard(
                   course: course,
-                  onTap: () => context.push(AppRoutes.courseDetail),
+                  onTap: () => context.push(AppRoutes.playingCourse),
+                  onAction: (action) => _handleAction(context, action),
                 ),
-                if (course != courses.last) const SizedBox(height: 16),
+                if (course != courses.last) ...[
+                  const SizedBox(height: 16),
+                  const Divider(height: 1, color: AppColors.neutral200),
+                  const SizedBox(height: 16),
+                ],
               ],
             ],
           ),

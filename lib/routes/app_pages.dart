@@ -10,11 +10,22 @@ import '../features/auth/presentation/reset_password_screen.dart';
 import '../features/auth/presentation/role_selection_screen.dart';
 import '../features/auth/presentation/set_new_password_screen.dart';
 import '../features/auth/presentation/upload_photo_screen.dart';
+import '../features/cart_and_payment/presentation/order_details_screen.dart';
+import '../features/cart_and_payment/presentation/payment_screen.dart';
+import '../features/cart_and_payment/presentation/payment_successful_screen.dart';
+import '../features/courses/domain/entities/quiz_question_entity.dart';
 import '../features/courses/domain/entities/search_target.dart';
 import '../features/courses/presentation/all_courses_screen.dart';
 import '../features/courses/presentation/all_live_subjects_screen.dart';
+import '../features/courses/presentation/course_detail_screen.dart';
 import '../features/courses/presentation/filter_screen.dart';
 import '../features/courses/presentation/filtered_results_screen.dart';
+import '../features/courses/presentation/my_courses_screen.dart';
+import '../features/courses/presentation/playing_course_screen.dart';
+import '../features/courses/presentation/quiz_answers_screen.dart';
+import '../features/courses/presentation/quiz_results_screen.dart';
+import '../features/courses/presentation/quiz_screen.dart';
+import '../features/courses/presentation/reading_article_screen.dart';
 import '../features/courses/presentation/request_new_subject_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/notifications/presentation/notifications_screen.dart';
@@ -128,6 +139,46 @@ class AppPages {
         path: AppRoutes.allCourses,
         builder: (context, state) => const AllCoursesScreen(),
       ),
+      GoRoute(
+        path: AppRoutes.courseDetail,
+        builder: (context, state) => const CourseDetailScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.orderDetails,
+        builder: (context, state) => const OrderDetailsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.payment,
+        builder: (context, state) => const PaymentScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.paymentSuccessful,
+        builder: (context, state) => const PaymentSuccessfulScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.myCourses,
+        builder: (context, state) => const MyCoursesScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.playingCourse,
+        builder: (context, state) => const PlayingCourseScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.readingArticle,
+        builder: (context, state) => const ReadingArticleScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.quiz,
+        builder: (context, state) => const QuizScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.quizResults,
+        builder: (context, state) => _buildQuizResultsScreen(state),
+      ),
+      GoRoute(
+        path: AppRoutes.quizAnswers,
+        builder: (context, state) => _buildQuizAnswersScreen(state),
+      ),
     ],
   );
 
@@ -144,6 +195,23 @@ class AppPages {
     return FilteredResultsScreen(
       target: extra?['target'] as SearchTarget? ?? SearchTarget.tutors,
       filterCount: extra?['filterCount'] as int? ?? 5,
+    );
+  }
+
+  static QuizResultsScreen _buildQuizResultsScreen(GoRouterState state) {
+    final extra = state.extra as Map<String, dynamic>;
+    return QuizResultsScreen(
+      questions: extra['questions'] as List<QuizQuestionEntity>,
+      answers: extra['answers'] as Map<int, Set<int>>,
+      score: extra['score'] as int,
+    );
+  }
+
+  static QuizAnswersScreen _buildQuizAnswersScreen(GoRouterState state) {
+    final extra = state.extra as Map<String, dynamic>;
+    return QuizAnswersScreen(
+      questions: extra['questions'] as List<QuizQuestionEntity>,
+      answers: extra['answers'] as Map<int, Set<int>>,
     );
   }
 }
