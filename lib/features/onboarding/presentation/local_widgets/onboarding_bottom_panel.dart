@@ -29,7 +29,7 @@ class OnboardingBottomPanel extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.fromLTRB(24, 24, 24, 8 + bottomSafeArea),
+      padding: EdgeInsets.fromLTRB(24, 10, 24, 16 + bottomSafeArea),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -47,7 +47,7 @@ class OnboardingBottomPanel extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: AppTypography.h3SemiBold.copyWith(color: AppColors.accent),
+            style: AppTypography.h3SemiBold.copyWith(color: AppColors.accent,fontSize: 20),
           ),
           const SizedBox(height: 8),
           Text(
@@ -55,6 +55,7 @@ class OnboardingBottomPanel extends StatelessWidget {
             textAlign: TextAlign.center,
             style: AppTypography.bodyLargeRegular.copyWith(
               color: AppColors.neutral600,
+              fontSize: 16
             ),
           ),
           const SizedBox(height: 100),

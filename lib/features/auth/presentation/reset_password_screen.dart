@@ -16,22 +16,14 @@ class ResetPasswordScreen extends StatefulWidget {
 }
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  final TextEditingController _phoneController = TextEditingController();
-
-  @override
-  void dispose() {
-    _phoneController.dispose();
-    super.dispose();
-  }
+  String _phoneNumber = '';
 
   void _getInstructions() {
     context.push(
       AppRoutes.resetPasswordOtp,
       extra: {
         'purpose': OtpPurpose.resetPassword,
-        'phone': _phoneController.text.isEmpty
-            ? '555-0113'
-            : _phoneController.text,
+        'phone': _phoneNumber,
       },
     );
   }
@@ -55,7 +47,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     'reset your password.',
               ),
               const SizedBox(height: 40),
-              PhoneNumberField(controller: _phoneController),
+              PhoneNumberField(
+                onChanged: (value) => _phoneNumber = value,
+              ),
               const SizedBox(height: 20),
               AppButton(label: 'Get Instructions', onPressed: _getInstructions),
             ],

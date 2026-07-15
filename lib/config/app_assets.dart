@@ -26,8 +26,6 @@ class AppImages {
       '${_base}course_content_writing.png';
   static const String coursePersonalFinance =
       '${_base}course_personal_finance.jpg';
-
-  static const String tutorMuhammad = '${_base}tutor_muhammad.png';
 }
 
 class AppIcons {
@@ -37,7 +35,9 @@ class AppIcons {
 
   static const String google = '${_base}google.svg';
   static const String facebook = '${_base}facebook.svg';
-  static const String usFlag = '${_base}us_flag.svg';
+
+  static const String teacherIllustration = '${_base}teacher.svg';
+  static const String studentIllustration = '${_base}student.svg';
 
   static const String subjectMath = '${_base}subject_math.svg';
   static const String subjectArchitecture =
@@ -52,13 +52,9 @@ class AppIcons {
 class AppNetworkImages {
   AppNetworkImages._();
 
-  static const String teacherRole =
-      'https://placehold.co/240x180/EEE0FF/9F54F8?text=Teacher';
-  static const String studentRole =
-      'https://placehold.co/240x180/8932EB/FFFFFF?text=Student';
-
   static const String tutorAlbert = 'https://i.pravatar.cc/150?img=12';
   static const String tutorDarrell = 'https://i.pravatar.cc/150?img=13';
   static const String tutorJane = 'https://i.pravatar.cc/150?img=25';
   static const String tutorJulia = 'https://i.pravatar.cc/150?img=32';
+  static const String currentUserAvatar = 'https://i.pravatar.cc/150?img=8';
 }

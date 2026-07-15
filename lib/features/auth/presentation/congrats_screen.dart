@@ -1,8 +1,11 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../config/app_colors.dart';
 import '../../../config/app_typography.dart';
+import '../../../core/blocs/auth/auth_bloc.dart';
+import '../../../core/blocs/auth/auth_event.dart';
 import '../../../core/shared_widgets/app_button.dart';
 import '../../../routes/app_routes.dart';
 
@@ -39,7 +42,10 @@ class _CongratsScreenState extends State<CongratsScreen> {
           padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
           child: AppButton(
             label: 'Go to Home',
-            onPressed: () => context.go(AppRoutes.home),
+            onPressed: () {
+              context.read<AuthBloc>().add(const AuthOnboardingCompleted());
+              context.go(AppRoutes.home);
+            },
           ),
         ),
       ),

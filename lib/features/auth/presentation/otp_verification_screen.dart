@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../config/app_colors.dart';
 import '../../../config/app_typography.dart';
+import '../../../core/blocs/auth/auth_bloc.dart';
+import '../../../core/blocs/auth/auth_event.dart';
 import '../../../core/shared_widgets/app_button.dart';
 import '../../../routes/app_routes.dart';
 import '../domain/entities/otp_purpose.dart';
@@ -30,6 +33,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         context.push(AppRoutes.registerNameEmail);
         break;
       case OtpPurpose.login:
+        context.read<AuthBloc>().add(const AuthOnboardingCompleted());
         context.go(AppRoutes.home);
         break;
       case OtpPurpose.resetPassword:
@@ -47,6 +51,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
   String get _subtitleSuffix =>
       widget.purpose == OtpPurpose.resetPassword ? ' in order to reset password' : '';
+
+  String get _displayPhone => widget.phone.isEmpty ? '+1 555-0113' : widget.phone;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +76,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   children: [
                     TextSpan(text: _subtitlePrefix),
                     TextSpan(
-                      text: '(217) ${widget.phone}',
+                      text: _displayPhone,
                       style: AppTypography.bodyLargeMedium.copyWith(
                         color: AppColors.primary,
                       ),

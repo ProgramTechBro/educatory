@@ -6,3 +6,11 @@ abstract class AuthEvent extends Equatable {
   @override
   List<Object?> get props => [];
 }
+
+class AuthStarted extends AuthEvent {
+  const AuthStarted();
+}
+
+class AuthOnboardingCompleted extends AuthEvent {
+  const AuthOnboardingCompleted();
+}

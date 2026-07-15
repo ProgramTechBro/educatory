@@ -22,15 +22,9 @@ class PhoneAuthScreen extends StatefulWidget {
 }
 
 class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
-  final TextEditingController _phoneController = TextEditingController();
+  String _phoneNumber = '';
 
   bool get _isLogin => widget.mode == AuthMode.login;
-
-  @override
-  void dispose() {
-    _phoneController.dispose();
-    super.dispose();
-  }
 
   void _continue() {
     final otpRoute = _isLogin ? AppRoutes.loginOtp : AppRoutes.registerOtp;
@@ -38,9 +32,7 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
       otpRoute,
       extra: {
         'purpose': _isLogin ? OtpPurpose.login : OtpPurpose.register,
-        'phone': _phoneController.text.isEmpty
-            ? '555-0113'
-            : _phoneController.text,
+        'phone': _phoneNumber,
       },
     );
   }
@@ -62,7 +54,9 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                 subtitle: 'Enter your phone number to receive verification code.',
               ),
               const SizedBox(height: 40),
-              PhoneNumberField(controller: _phoneController),
+              PhoneNumberField(
+                onChanged: (value) => _phoneNumber = value,
+              ),
               const SizedBox(height: 20),
               AppButton(label: 'Continue', onPressed: _continue),
               if (_isLogin) ...[
