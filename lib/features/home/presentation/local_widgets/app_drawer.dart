@@ -44,7 +44,10 @@ class AppDrawer extends StatelessWidget {
       _DrawerMenuItem(
         icon: Icons.menu_book_outlined,
         label: 'My Courses',
-        onTap: () => context.pop(),
+        onTap: () {
+          context.pop();
+          context.push(AppRoutes.myCourses);
+        },
       ),
       _DrawerMenuItem(
         icon: Icons.star_outline,

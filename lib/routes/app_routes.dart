@@ -31,4 +31,16 @@ class AppRoutes {
   static const String allLiveSubjects = '/all-live-subjects';
   static const String requestNewSubject = '/request-new-subject';
   static const String allCourses = '/all-courses';
+
+  static const String courseDetail = '/course-detail';
+  static const String orderDetails = '/order-details';
+  static const String payment = '/payment';
+  static const String paymentSuccessful = '/payment-successful';
+
+  static const String myCourses = '/my-courses';
+  static const String playingCourse = '/playing-course';
+  static const String readingArticle = '/reading-article';
+  static const String quiz = '/quiz';
+  static const String quizResults = '/quiz-results';
+  static const String quizAnswers = '/quiz-answers';
 }
