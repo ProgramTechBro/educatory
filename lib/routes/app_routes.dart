@@ -24,4 +24,11 @@ class AppRoutes {
 
   static const String filter = '/filter';
   static const String filteredResults = '/filtered-results';
+
+  static const String profile = '/profile';
+  static const String reviews = '/reviews';
+  static const String notifications = '/notifications';
+  static const String allLiveSubjects = '/all-live-subjects';
+  static const String requestNewSubject = '/request-new-subject';
+  static const String allCourses = '/all-courses';
 }
