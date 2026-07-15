@@ -12,6 +12,7 @@ class AppTextField extends StatelessWidget {
   final bool readOnly;
   final VoidCallback? onTap;
   final TextInputType? keyboardType;
+  final int maxLines;
 
   const AppTextField({
     super.key,
@@ -24,6 +25,7 @@ class AppTextField extends StatelessWidget {
     this.readOnly = false,
     this.onTap,
     this.keyboardType,
+    this.maxLines = 1,
   });
 
   @override
@@ -60,6 +62,7 @@ class AppTextField extends StatelessWidget {
                   readOnly: readOnly,
                   onTap: onTap,
                   keyboardType: keyboardType,
+                  maxLines: maxLines,
                   style: AppTypography.bodyLargeRegular.copyWith(
                     color: AppColors.neutral900,
                   ),

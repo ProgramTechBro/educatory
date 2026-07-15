@@ -11,10 +11,17 @@ import '../features/auth/presentation/role_selection_screen.dart';
 import '../features/auth/presentation/set_new_password_screen.dart';
 import '../features/auth/presentation/upload_photo_screen.dart';
 import '../features/courses/domain/entities/search_target.dart';
+import '../features/courses/presentation/all_courses_screen.dart';
+import '../features/courses/presentation/all_live_subjects_screen.dart';
 import '../features/courses/presentation/filter_screen.dart';
 import '../features/courses/presentation/filtered_results_screen.dart';
+import '../features/courses/presentation/request_new_subject_screen.dart';
 import '../features/home/presentation/home_screen.dart';
+import '../features/notifications/presentation/notifications_screen.dart';
 import '../features/onboarding/presentation/onboarding_screen.dart';
+import '../features/profile/domain/entities/review_entity.dart';
+import '../features/profile/presentation/profile_screen.dart';
+import '../features/profile/presentation/reviews_screen.dart';
 import '../features/splash/presentation/splash_screen.dart';
 import 'app_routes.dart';
 
@@ -94,6 +101,32 @@ class AppPages {
       GoRoute(
         path: AppRoutes.filteredResults,
         builder: (context, state) => _buildFilteredResultsScreen(state),
+      ),
+      GoRoute(
+        path: AppRoutes.profile,
+        builder: (context, state) => const ProfileScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.reviews,
+        builder: (context, state) => ReviewsScreen(
+          filter: state.extra as ReviewTargetType?,
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.notifications,
+        builder: (context, state) => const NotificationsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.allLiveSubjects,
+        builder: (context, state) => const AllLiveSubjectsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.requestNewSubject,
+        builder: (context, state) => const RequestNewSubjectScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.allCourses,
+        builder: (context, state) => const AllCoursesScreen(),
       ),
     ],
   );

@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../config/app_assets.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
+import '../../../../core/shared_widgets/rating_stars.dart';
+import '../../../../routes/app_routes.dart';
 
 class _DrawerMenuItem {
   final IconData icon;
@@ -23,33 +26,47 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final topPadding= MediaQuery.of(context).padding.top;
     final menuItems = [
-      _DrawerMenuItem(icon: Icons.home_outlined, label: 'Home', onTap: () {}),
+      _DrawerMenuItem(
+        icon: Icons.home_outlined,
+        label: 'Home',
+        onTap: () => context.pop(),
+      ),
       _DrawerMenuItem(
         icon: Icons.chat_bubble_outline,
         label: 'Messages',
-        onTap: () {},
+        onTap: () => context.pop(),
       ),
       _DrawerMenuItem(
         icon: Icons.list_alt_outlined,
         label: 'Tutor Bookings',
-        onTap: () {},
+        onTap: () => context.pop(),
       ),
       _DrawerMenuItem(
         icon: Icons.menu_book_outlined,
         label: 'My Courses',
-        onTap: () {},
+        onTap: () => context.pop(),
       ),
       _DrawerMenuItem(
         icon: Icons.star_outline,
         label: 'Rating & Reviews',
-        onTap: () {},
+        onTap: () {
+          context.pop();
+          context.push(AppRoutes.reviews);
+        },
       ),
       _DrawerMenuItem(
         icon: Icons.person_outline,
         label: 'Profile',
-        onTap: () {},
+        onTap: () {
+          context.pop();
+          context.push(AppRoutes.profile);
+        },
       ),
-      _DrawerMenuItem(icon: Icons.logout, label: 'Log Out', onTap: () {}),
+      _DrawerMenuItem(
+        icon: Icons.logout,
+        label: 'Log Out',
+        onTap: () => context.go(AppRoutes.loginPhone),
+      ),
     ];
 
     return Drawer(
@@ -83,29 +100,13 @@ class AppDrawer extends StatelessWidget {
                 const SizedBox(height: 16),
                 Row(
                   children: [
-                    Row(
-                      children: List.generate(4, (index) {
-                        return const Padding(
-                          padding: EdgeInsets.only(right: 4),
-                          child: Icon(
-                            Icons.star,
-                            size: 16,
-                            color: AppColors.orange500,
-                          ),
-                        );
-                      }),
-                    ),
-                    const Icon(
-                      Icons.star_half,
-                      size: 16,
-                      color: AppColors.orange500,
-                    ),
+                    const RatingStars(rating: 4.5, size: 16),
                     const SizedBox(width: 8),
                     Text(
                       '4.5',
                       style: AppTypography.bodySmallMedium.copyWith(
                         color: AppColors.neutral900,
-                        fontSize: 14
+                        fontSize: 14,
                       ),
                     ),
                   ],

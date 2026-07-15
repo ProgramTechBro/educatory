@@ -39,6 +39,8 @@ class HomeScreen extends StatelessWidget {
               child: HomeAppBar(
                 notificationCount: 5,
                 onMenuTap: () => _scaffoldKey.currentState?.openDrawer(),
+                onNotificationTap: () =>
+                    context.push(AppRoutes.notifications),
               ),
             ),
             Expanded(
@@ -62,13 +64,8 @@ class HomeScreen extends StatelessWidget {
                       child: SectionTitle(
                         title: 'Live Subject Tutoring',
                         actionLabel: 'All Subjects',
-                        onActionTap: () => context.push(
-                          AppRoutes.filteredResults,
-                          extra: {
-                            'target': SearchTarget.tutors,
-                            'filterCount': 0,
-                          },
-                        ),
+                        onActionTap: () =>
+                            context.push(AppRoutes.allLiveSubjects),
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -81,7 +78,10 @@ class HomeScreen extends StatelessWidget {
                             LiveSubjectCard(subject: subject),
                             const SizedBox(width: 8),
                           ],
-                          RequestCourseCard(onTap: () {}),
+                          RequestCourseCard(
+                            onTap: () =>
+                                context.push(AppRoutes.requestNewSubject),
+                          ),
                         ],
                       ),
                     ),
@@ -96,13 +96,7 @@ class HomeScreen extends StatelessWidget {
                       child: SectionTitle(
                         title: 'Trending Courses',
                         actionLabel: 'All Courses',
-                        onActionTap: () => context.push(
-                          AppRoutes.filteredResults,
-                          extra: {
-                            'target': SearchTarget.courses,
-                            'filterCount': 0,
-                          },
-                        ),
+                        onActionTap: () => context.push(AppRoutes.allCourses),
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -142,13 +136,7 @@ class HomeScreen extends StatelessWidget {
                       child: SectionTitle(
                         title: 'Top New Courses',
                         actionLabel: 'All Courses',
-                        onActionTap: () => context.push(
-                          AppRoutes.filteredResults,
-                          extra: {
-                            'target': SearchTarget.courses,
-                            'filterCount': 0,
-                          },
-                        ),
+                        onActionTap: () => context.push(AppRoutes.allCourses),
                       ),
                     ),
                     const SizedBox(height: 12),
