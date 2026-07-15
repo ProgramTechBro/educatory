@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
-import '../../domain/entities/course_entity.dart';
+import '../../../courses/domain/entities/course_entity.dart';
 
 class CourseCard extends StatelessWidget {
   final CourseEntity course;

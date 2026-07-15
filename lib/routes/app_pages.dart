@@ -10,6 +10,9 @@ import '../features/auth/presentation/reset_password_screen.dart';
 import '../features/auth/presentation/role_selection_screen.dart';
 import '../features/auth/presentation/set_new_password_screen.dart';
 import '../features/auth/presentation/upload_photo_screen.dart';
+import '../features/courses/domain/entities/search_target.dart';
+import '../features/courses/presentation/filter_screen.dart';
+import '../features/courses/presentation/filtered_results_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/onboarding/presentation/onboarding_screen.dart';
 import '../features/splash/presentation/splash_screen.dart';
@@ -82,6 +85,16 @@ class AppPages {
         path: AppRoutes.home,
         builder: (context, state) => HomeScreen(),
       ),
+      GoRoute(
+        path: AppRoutes.filter,
+        builder: (context, state) => FilterScreen(
+          initialTarget: state.extra as SearchTarget? ?? SearchTarget.tutors,
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.filteredResults,
+        builder: (context, state) => _buildFilteredResultsScreen(state),
+      ),
     ],
   );
 
@@ -90,6 +103,14 @@ class AppPages {
     return OtpVerificationScreen(
       purpose: extra?['purpose'] as OtpPurpose? ?? OtpPurpose.register,
       phone: extra?['phone'] as String? ?? '555-0113',
+    );
+  }
+
+  static FilteredResultsScreen _buildFilteredResultsScreen(GoRouterState state) {
+    final extra = state.extra as Map<String, dynamic>?;
+    return FilteredResultsScreen(
+      target: extra?['target'] as SearchTarget? ?? SearchTarget.tutors,
+      filterCount: extra?['filterCount'] as int? ?? 5,
     );
   }
 }

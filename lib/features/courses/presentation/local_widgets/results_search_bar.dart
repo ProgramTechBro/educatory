@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
 
-class HomeSearchField extends StatelessWidget {
+class ResultsSearchBar extends StatelessWidget {
+  final int filterCount;
   final VoidCallback onFilterTap;
 
-  const HomeSearchField({super.key, required this.onFilterTap});
+  const ResultsSearchBar({
+    super.key,
+    required this.filterCount,
+    required this.onFilterTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,7 @@ class HomeSearchField extends StatelessWidget {
                 isDense: true,
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.symmetric(vertical: 14),
-                hintText: 'Search',
+                hintText: 'Search a course...',
                 hintStyle: AppTypography.bodyLargeRegular.copyWith(
                   color: AppColors.neutral500,
                 ),
@@ -44,10 +49,18 @@ class HomeSearchField extends StatelessWidget {
               decoration: const BoxDecoration(
                 border: Border(left: BorderSide(color: AppColors.neutral300)),
               ),
-              child: const Icon(
-                Icons.tune,
-                size: 20,
-                color: AppColors.neutral500,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.tune, size: 20, color: AppColors.neutral500),
+                  const SizedBox(width: 8),
+                  Text(
+                    '$filterCount Filters',
+                    style: AppTypography.bodyLargeMedium.copyWith(
+                      color: AppColors.neutral500,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

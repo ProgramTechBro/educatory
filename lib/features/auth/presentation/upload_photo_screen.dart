@@ -35,7 +35,7 @@ class _UploadPhotoScreenState extends State<UploadPhotoScreen> {
               Expanded(
                 child: AppButton(
                   label: 'Skip for Later',
-                  variant: AppButtonVariant.secondary,
+                  variant: AppButtonVariant.outline,
                   height: 40,
                   onPressed: _continue,
                 ),

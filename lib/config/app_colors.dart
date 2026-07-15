@@ -36,6 +36,7 @@ class AppColors {
   static const Color secondaryButtonFill = Color(0xFFEEE0FF);
   static const Color buttonGlassBorder = Color(0x5CFFFFFF);
   static const Color bannerText = Color(0xFF56012D);
+  static const Color pageBackground = Color(0xFFF5F5F5);
 
   static List<BoxShadow> inputDropShadow = [
     BoxShadow(color: const Color(0x14344054), offset: const Offset(0, 1), blurRadius: 2),

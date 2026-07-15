@@ -21,6 +21,7 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final topPadding= MediaQuery.of(context).padding.top;
     final menuItems = [
       _DrawerMenuItem(icon: Icons.home_outlined, label: 'Home', onTap: () {}),
       _DrawerMenuItem(
@@ -58,7 +59,7 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(24, 20, 24, 32),
+            padding: EdgeInsets.fromLTRB(24,16+topPadding, 24, 32),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -88,7 +89,7 @@ class AppDrawer extends StatelessWidget {
                           padding: EdgeInsets.only(right: 4),
                           child: Icon(
                             Icons.star,
-                            size: 12,
+                            size: 16,
                             color: AppColors.orange500,
                           ),
                         );
@@ -96,7 +97,7 @@ class AppDrawer extends StatelessWidget {
                     ),
                     const Icon(
                       Icons.star_half,
-                      size: 12,
+                      size: 16,
                       color: AppColors.orange500,
                     ),
                     const SizedBox(width: 8),
@@ -104,6 +105,7 @@ class AppDrawer extends StatelessWidget {
                       '4.5',
                       style: AppTypography.bodySmallMedium.copyWith(
                         color: AppColors.neutral900,
+                        fontSize: 14
                       ),
                     ),
                   ],
