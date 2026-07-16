@@ -86,49 +86,64 @@ class _CourseDetailScreenBody extends StatelessWidget {
                 Expanded(
                   child: BlocBuilder<CourseDetailBloc, CourseDetailState>(
                     builder: (context, state) {
-                      return SingleChildScrollView(
-                        padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CourseDetailHeaderCard(course: detail.course),
-                            const SizedBox(height: 8),
-                            Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 16,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppColors.white,
-                                borderRadius: BorderRadius.circular(14),
-                                boxShadow: AppColors.inputDropShadow,
-                              ),
-                              child: Text(
-                                detail.description,
-                                style: AppTypography.bodySmallRegular
-                                    .copyWith(color: AppColors.neutral600),
-                              ),
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CourseDetailHeaderCard(course: detail.course),
+                                const SizedBox(height: 8),
+                                Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 16,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.white,
+                                    borderRadius: BorderRadius.circular(14),
+                                    boxShadow: AppColors.inputDropShadow,
+                                  ),
+                                  child: Text(
+                                    detail.description,
+                                    style: AppTypography.bodySmallRegular
+                                        .copyWith(
+                                      color: AppColors.neutral600,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                CourseTabBar(
+                                  activeTab: state.activeTab,
+                                  onChanged: (tab) => context
+                                      .read<CourseDetailBloc>()
+                                      .add(CourseDetailTabChanged(tab)),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 20),
-                            CourseTabBar(
-                              activeTab: state.activeTab,
-                              onChanged: (tab) => context
-                                  .read<CourseDetailBloc>()
-                                  .add(CourseDetailTabChanged(tab)),
+                          ),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              padding: const EdgeInsets.fromLTRB(
+                                24,
+                                16,
+                                24,
+                                24,
+                              ),
+                              child: state.activeTab == CourseDetailTab.about
+                                  ? _AboutTab(
+                                      includes: detail.includes,
+                                      modules: detail.modules,
+                                    )
+                                  : state.activeTab == CourseDetailTab.reviews
+                                      ? _ReviewsTab(dataSource: dataSource)
+                                      : _AuthorTab(dataSource: dataSource),
                             ),
-                            const SizedBox(height: 16),
-                            if (state.activeTab == CourseDetailTab.about)
-                              _AboutTab(
-                                includes: detail.includes,
-                                modules: detail.modules,
-                              )
-                            else if (state.activeTab == CourseDetailTab.reviews)
-                              _ReviewsTab(dataSource: dataSource)
-                            else
-                              _AuthorTab(dataSource: dataSource),
-                          ],
-                        ),
+                          ),
+                        ],
                       );
                     },
                   ),

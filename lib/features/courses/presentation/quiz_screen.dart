@@ -125,7 +125,6 @@ class _QuizScreenBody extends StatelessWidget {
                       QuizOptionTile(
                         label: question.options[i],
                         isSelected: state.currentSelection.contains(i),
-                        type: question.type,
                         onTap: () => context.read<QuizBloc>().add(
                               QuizOptionToggled(i),
                             ),
