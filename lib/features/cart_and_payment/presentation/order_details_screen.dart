@@ -8,11 +8,16 @@ import '../data/datasources/cart_local_datasource.dart';
 import 'local_widgets/order_summary_row.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
-  const OrderDetailsScreen({super.key});
+  final bool isSession;
+
+  const OrderDetailsScreen({super.key, this.isSession = false});
 
   @override
   Widget build(BuildContext context) {
-    final order = CartLocalDataSource().getOrderSummary();
+    final dataSource = CartLocalDataSource();
+    final order = isSession
+        ? dataSource.getSessionOrderSummary()
+        : dataSource.getOrderSummary();
 
     return Scaffold(
       backgroundColor: AppColors.pageBackground,
@@ -36,7 +41,9 @@ class OrderDetailsScreen extends StatelessWidget {
         leadingLabel: 'Add to Cart',
         onLeadingTap: () => context.pop(),
         trailingLabel: 'Purchase Now',
-        onTrailingTap: () => context.push(AppRoutes.payment),
+        onTrailingTap: () => context.push(
+          isSession ? AppRoutes.bookingPayment : AppRoutes.payment,
+        ),
       ),
       body: Container(
         color: AppColors.white,

@@ -75,7 +75,11 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           for (final subject in liveSubjects) ...[
-                            LiveSubjectCard(subject: subject),
+                            LiveSubjectCard(
+                              subject: subject,
+                              onTap: () =>
+                                  context.push(AppRoutes.liveSubjectDetail),
+                            ),
                             const SizedBox(width: 8),
                           ],
                           RequestCourseCard(

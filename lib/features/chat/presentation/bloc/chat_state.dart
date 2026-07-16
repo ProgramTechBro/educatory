@@ -1,30 +1,15 @@
 import 'package:equatable/equatable.dart';
-import '../../../../core/enums/request_status.dart';
 import '../../domain/entities/message_entity.dart';
 
 class ChatState extends Equatable {
-  final RequestStatus status;
   final List<MessageEntity> messages;
-  final String? errorMessage;
 
-  const ChatState({
-    this.status = RequestStatus.initial,
-    this.messages = const [],
-    this.errorMessage,
-  });
+  const ChatState({this.messages = const []});
 
-  ChatState copyWith({
-    RequestStatus? status,
-    List<MessageEntity>? messages,
-    String? errorMessage,
-  }) {
-    return ChatState(
-      status: status ?? this.status,
-      messages: messages ?? this.messages,
-      errorMessage: errorMessage,
-    );
+  ChatState copyWith({List<MessageEntity>? messages}) {
+    return ChatState(messages: messages ?? this.messages);
   }
 
   @override
-  List<Object?> get props => [status, messages, errorMessage];
+  List<Object?> get props => [messages];
 }

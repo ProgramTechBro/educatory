@@ -10,20 +10,6 @@ class RequestSubjectHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          width: 56,
-          height: 56,
-          decoration: const BoxDecoration(
-            color: AppColors.purple100,
-            shape: BoxShape.circle,
-          ),
-          child: const Icon(
-            Icons.auto_awesome_outlined,
-            size: 28,
-            color: AppColors.accent,
-          ),
-        ),
-        const SizedBox(height: 16),
         Text("Can't find your subject?", style: AppTypography.h3SemiBold),
         const SizedBox(height: 4),
         Text(

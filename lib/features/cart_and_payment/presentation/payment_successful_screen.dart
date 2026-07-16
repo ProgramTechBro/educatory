@@ -1,12 +1,17 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../config/app_colors.dart';
 import '../../../config/app_typography.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/shared_widgets/app_button.dart';
+import '../../../core/shared_widgets/two_button_bottom_bar.dart';
+import '../../../routes/app_routes.dart';
 
 class PaymentSuccessfulScreen extends StatefulWidget {
-  const PaymentSuccessfulScreen({super.key});
+  final bool isSession;
+
+  const PaymentSuccessfulScreen({super.key, this.isSession = false});
 
   @override
   State<PaymentSuccessfulScreen> createState() =>
@@ -34,15 +39,22 @@ class _PaymentSuccessfulScreenState extends State<PaymentSuccessfulScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
-          child: AppButton(
-            label: 'Go to My Courses',
-            onPressed: () => context.goToMyCourses(),
-          ),
-        ),
-      ),
+      bottomNavigationBar: widget.isSession
+          ? TwoButtonBottomBar(
+              leadingLabel: 'Back to Home',
+              onLeadingTap: () => context.go(AppRoutes.home),
+              trailingLabel: 'Message Robert',
+              onTrailingTap: () => context.go(AppRoutes.contactList),
+            )
+          : SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
+                child: AppButton(
+                  label: 'Go to My Courses',
+                  onPressed: () => context.goToMyCourses(),
+                ),
+              ),
+            ),
       body: Stack(
         children: [
           Align(
@@ -80,7 +92,9 @@ class _PaymentSuccessfulScreenState extends State<PaymentSuccessfulScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 14.0),
                   child: Text(
-                    'Your payment has been completed successfully. You can now start learning your new course',
+                    widget.isSession
+                        ? 'Congratulations! Your booking to Robert Fox has been successful.'
+                        : 'Your payment has been completed successfully. You can now start learning your new course',
                     textAlign: TextAlign.center,
                     style: AppTypography.bodyLargeRegular.copyWith(
                       color: AppColors.neutral600,
