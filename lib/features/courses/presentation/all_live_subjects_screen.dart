@@ -61,7 +61,11 @@ class AllLiveSubjectsScreen extends StatelessWidget {
                       runSpacing: 8,
                       children: [
                         for (final subject in subjects)
-                          LiveSubjectCard(subject: subject),
+                          LiveSubjectCard(
+                            subject: subject,
+                            onTap: () =>
+                                context.push(AppRoutes.liveSubjectDetail),
+                          ),
                       ],
                     ),
                   ],

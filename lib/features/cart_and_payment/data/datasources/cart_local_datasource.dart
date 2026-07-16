@@ -11,4 +11,15 @@ class CartLocalDataSource {
       tutorName: 'Robert Fox',
     );
   }
+
+  OrderSummaryEntity getSessionOrderSummary() {
+    return const OrderSummaryEntity(
+      courseName: '1 Hour Online Session',
+      subtotal: 30,
+      discount: 3,
+      vatPercent: 9,
+      vatAmount: 2.43,
+      tutorName: 'Robert Fox',
+    );
+  }
 }

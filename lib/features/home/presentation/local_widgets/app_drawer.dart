@@ -34,7 +34,10 @@ class AppDrawer extends StatelessWidget {
       _DrawerMenuItem(
         icon: Icons.chat_bubble_outline,
         label: 'Messages',
-        onTap: () => context.pop(),
+        onTap: () {
+          context.pop();
+          context.push(AppRoutes.contactList);
+        },
       ),
       _DrawerMenuItem(
         icon: Icons.list_alt_outlined,

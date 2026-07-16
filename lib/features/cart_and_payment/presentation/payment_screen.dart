@@ -13,21 +13,26 @@ import 'bloc/payment_bloc.dart';
 import 'bloc/payment_event.dart';
 import 'bloc/payment_state.dart';
 import 'local_widgets/payment_method_tile.dart';
+import 'local_widgets/promo_code_sheet.dart';
 
 class PaymentScreen extends StatelessWidget {
-  const PaymentScreen({super.key});
+  final bool isSession;
+
+  const PaymentScreen({super.key, this.isSession = false});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => PaymentBloc(),
-      child: const _PaymentScreenBody(),
+      child: _PaymentScreenBody(isSession: isSession),
     );
   }
 }
 
 class _PaymentScreenBody extends StatefulWidget {
-  const _PaymentScreenBody();
+  final bool isSession;
+
+  const _PaymentScreenBody({required this.isSession});
 
   @override
   State<_PaymentScreenBody> createState() => _PaymentScreenBodyState();
@@ -68,7 +73,11 @@ class _PaymentScreenBodyState extends State<_PaymentScreenBody> {
       ),
       bottomNavigationBar: TwoButtonBottomBar(
         trailingLabel: 'Checkout',
-        onTrailingTap: () => context.push(AppRoutes.paymentSuccessful),
+        onTrailingTap: () => context.push(
+          widget.isSession
+              ? AppRoutes.bookingSuccessful
+              : AppRoutes.paymentSuccessful,
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -164,21 +173,27 @@ class _PaymentScreenBodyState extends State<_PaymentScreenBody> {
               ),
             ),
             const SizedBox(height: 8),
-            Container(
-              width: double.infinity,
-              color: AppColors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Got a Promocode?', style: AppTypography.h4Medium),
-                  Text(
-                    'Apply Here',
-                    style: AppTypography.bodyLargeRegular.copyWith(
-                      color: AppColors.primary,
+            InkWell(
+              onTap: () => PromoCodeSheet.show(context),
+              child: Container(
+                width: double.infinity,
+                color: AppColors.white,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 16,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Got a Promocode?', style: AppTypography.h4Medium),
+                    Text(
+                      'Apply Here',
+                      style: AppTypography.bodyLargeRegular.copyWith(
+                        color: AppColors.primary,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

@@ -11,8 +11,10 @@ class AppColors {
   static const Color neutral700 = Color(0xFF334155);
   static const Color neutral600 = Color(0xFF475569);
   static const Color neutral500 = Color(0xFF64748B);
+  static const Color neutral400 = Color(0xFF94A3B8);
   static const Color neutral300 = Color(0xFFCBD5E1);
   static const Color neutral200 = Color(0xFFE2E8F0);
+  static const Color neutral50 = Color(0xFFF8FAFC);
   static const Color white = Color(0xFFFFFFFF);
 
   static const Color green100 = Color(0xFFDCFCE7);
@@ -21,12 +23,16 @@ class AppColors {
   static const Color green600 = Color(0xFF16A34A);
   static const Color blue100 = Color(0xFFDBEAFE);
   static const Color purple100 = Color(0xFFE7D5FF);
+  static const Color purple50 = Color(0xFFF3E8FF);
   static const Color pink100 = Color(0xFFFFC7CB);
   static const Color red50 = Color(0xFFFEF2F2);
   static const Color red100 = Color(0xFFFEE2E2);
   static const Color red500 = Color(0xFFEF4444);
+  static const Color orange100 = Color(0xFFFFEDD5);
   static const Color orange400 = Color(0xFFFB923C);
   static const Color orange500 = Color(0xFFF97316);
+  static const Color callDeclineRed = Color(0xFFF83D39);
+  static const Color callAcceptGreen = Color(0xFF059669);
 
   static const List<Color> gradientPurple = [Color(0xFF7421CF), Color(0xFF9F54F8)];
   static const List<Color> gradientBlue = [Color(0xFF0980B8), Color(0xFF61C2D2)];

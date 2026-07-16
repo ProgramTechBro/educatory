@@ -10,6 +10,7 @@ class AppTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final bool obscureText;
   final bool readOnly;
+  final bool enabled;
   final VoidCallback? onTap;
   final TextInputType? keyboardType;
   final int maxLines;
@@ -23,6 +24,7 @@ class AppTextField extends StatelessWidget {
     this.suffixIcon,
     this.obscureText = false,
     this.readOnly = false,
+    this.enabled = true,
     this.onTap,
     this.keyboardType,
     this.maxLines = 1,
@@ -44,10 +46,10 @@ class AppTextField extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: enabled ? AppColors.white : AppColors.neutral50,
             border: Border.all(color: AppColors.neutral300),
             borderRadius: BorderRadius.circular(10),
-            boxShadow: AppColors.inputDropShadow,
+            boxShadow: enabled ? AppColors.inputDropShadow : null,
           ),
           child: Row(
             children: [
@@ -60,6 +62,7 @@ class AppTextField extends StatelessWidget {
                   controller: controller,
                   obscureText: obscureText,
                   readOnly: readOnly,
+                  enabled: enabled,
                   onTap: onTap,
                   keyboardType: keyboardType,
                   maxLines: maxLines,

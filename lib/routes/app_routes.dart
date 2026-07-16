@@ -43,4 +43,20 @@ class AppRoutes {
   static const String quiz = '/quiz';
   static const String quizResults = '/quiz-results';
   static const String quizAnswers = '/quiz-answers';
+
+  static const String liveSubjectDetail = '/live-subject-detail';
+  static const String tutorDetail = '/tutor-detail';
+  static const String scheduleTutoring = '/schedule-tutoring';
+  static const String bookingOrderDetails = '/booking-order-details';
+  static const String bookingPayment = '/booking-payment';
+  static const String bookingSuccessful = '/booking-successful';
+
+  static const String contactList = '/contact-list';
+  static const String chat = '/chat';
+
+  static const String sessionRequest = '/session-request';
+  static const String sessionProcessing = '/session-processing';
+  static const String sessionFallback = '/session-fallback';
+  static const String incomingCall = '/incoming-call';
+  static const String videoCall = '/video-call';
 }

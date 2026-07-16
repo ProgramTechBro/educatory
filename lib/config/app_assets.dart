@@ -36,6 +36,12 @@ class AppImages {
       '${_base}advance_algorithm_course.jpg';
   static const String resultCourseMobileApp =
       '${_base}mobile_app_development.png';
+
+  static const String liveSubjectArchitecture =
+      '${_base}live_subject_architecture.png';
+
+  static const String videoCallBackground =
+      '${_base}video_call_background.png';
 }
 
 class AppIcons {
@@ -59,6 +65,11 @@ class AppIcons {
       '${_base}subject_computer_science.svg';
 
   static const String paypal = '${_base}paypal.svg';
+
+  static const String sessionRequestIllustration =
+      '${_base}session_request_illustration.svg';
+  static const String sessionFallbackIllustration =
+      '${_base}session_fallback_illustration.svg';
 }
 
 class AppNetworkImages {
@@ -76,4 +87,17 @@ class AppNetworkImages {
   static const String resultTutorGuy = 'https://i.pravatar.cc/150?img=15';
   static const String resultTutorJulia = 'https://i.pravatar.cc/150?img=20';
   static const String resultTutorAlbert = 'https://i.pravatar.cc/150?img=33';
+
+  static const String tutorRobertFox = 'https://i.pravatar.cc/150?img=51';
+  static const String tutorEstherHoward = 'https://i.pravatar.cc/150?img=44';
+  static const String tutorGuyHawkinsLondon = 'https://i.pravatar.cc/150?img=68';
+  static const String tutorDarrelSteward = 'https://i.pravatar.cc/150?img=60';
+  static const String tutorGuyHawkinsAarhus = 'https://i.pravatar.cc/150?img=14';
+  static const String reviewerMuhammadShahin = 'https://i.pravatar.cc/150?img=11';
+
+  static const String contactJaneCooper = 'https://i.pravatar.cc/150?img=45';
+  static const String contactJacobJones = 'https://i.pravatar.cc/150?img=59';
+  static const String contactCodyFisher = 'https://i.pravatar.cc/150?img=54';
+  static const String contactAlbertFlores = 'https://i.pravatar.cc/150?img=52';
+  static const String contactRalphEdwards = 'https://i.pravatar.cc/150?img=57';
 }

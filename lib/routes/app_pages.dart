@@ -13,6 +13,9 @@ import '../features/auth/presentation/upload_photo_screen.dart';
 import '../features/cart_and_payment/presentation/order_details_screen.dart';
 import '../features/cart_and_payment/presentation/payment_screen.dart';
 import '../features/cart_and_payment/presentation/payment_successful_screen.dart';
+import '../features/chat/domain/entities/contact_entity.dart';
+import '../features/chat/presentation/contact_list_screen.dart';
+import '../features/chat/presentation/messages_screen.dart';
 import '../features/courses/domain/entities/quiz_question_entity.dart';
 import '../features/courses/domain/entities/search_target.dart';
 import '../features/courses/presentation/all_courses_screen.dart';
@@ -28,6 +31,14 @@ import '../features/courses/presentation/quiz_screen.dart';
 import '../features/courses/presentation/reading_article_screen.dart';
 import '../features/courses/presentation/request_new_subject_screen.dart';
 import '../features/home/presentation/home_screen.dart';
+import '../features/live_tutoring/presentation/incoming_call_screen.dart';
+import '../features/live_tutoring/presentation/live_subject_detail_screen.dart';
+import '../features/live_tutoring/presentation/schedule_tutoring_screen.dart';
+import '../features/live_tutoring/presentation/session_fallback_screen.dart';
+import '../features/live_tutoring/presentation/session_processing_screen.dart';
+import '../features/live_tutoring/presentation/session_request_screen.dart';
+import '../features/live_tutoring/presentation/tutor_detail_screen.dart';
+import '../features/live_tutoring/presentation/video_call_screen.dart';
 import '../features/notifications/presentation/notifications_screen.dart';
 import '../features/onboarding/presentation/onboarding_screen.dart';
 import '../features/profile/domain/entities/review_entity.dart';
@@ -178,6 +189,60 @@ class AppPages {
       GoRoute(
         path: AppRoutes.quizAnswers,
         builder: (context, state) => _buildQuizAnswersScreen(state),
+      ),
+      GoRoute(
+        path: AppRoutes.liveSubjectDetail,
+        builder: (context, state) => const LiveSubjectDetailScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.tutorDetail,
+        builder: (context, state) => const TutorDetailScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.scheduleTutoring,
+        builder: (context, state) => const ScheduleTutoringScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.bookingOrderDetails,
+        builder: (context, state) => const OrderDetailsScreen(isSession: true),
+      ),
+      GoRoute(
+        path: AppRoutes.bookingPayment,
+        builder: (context, state) => const PaymentScreen(isSession: true),
+      ),
+      GoRoute(
+        path: AppRoutes.bookingSuccessful,
+        builder: (context, state) =>
+            const PaymentSuccessfulScreen(isSession: true),
+      ),
+      GoRoute(
+        path: AppRoutes.contactList,
+        builder: (context, state) => const ContactListScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.chat,
+        builder: (context, state) =>
+            MessagesScreen(contact: state.extra as ContactEntity),
+      ),
+      GoRoute(
+        path: AppRoutes.sessionRequest,
+        builder: (context, state) => const SessionRequestScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.sessionProcessing,
+        builder: (context, state) => const SessionProcessingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.sessionFallback,
+        builder: (context, state) => const SessionFallbackScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.incomingCall,
+        builder: (context, state) => const IncomingCallScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.videoCall,
+        builder: (context, state) => const VideoCallScreen(),
       ),
     ],
   );
