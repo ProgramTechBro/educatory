@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../../../../config/app_colors.dart';
-import '../../../../config/app_typography.dart';
+import '../../config/app_colors.dart';
+import '../../config/app_typography.dart';
 
 class ResendCodeText extends StatefulWidget {
   final int seconds;

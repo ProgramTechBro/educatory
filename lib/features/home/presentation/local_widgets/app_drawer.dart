@@ -1,19 +1,20 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../config/app_assets.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
+import '../../../../core/shared_widgets/network_avatar.dart';
 import '../../../../core/shared_widgets/rating_stars.dart';
 import '../../../../routes/app_routes.dart';
 
 class _DrawerMenuItem {
-  final IconData icon;
+  final String iconAsset;
   final String label;
   final VoidCallback onTap;
 
   const _DrawerMenuItem({
-    required this.icon,
+    required this.iconAsset,
     required this.label,
     required this.onTap,
   });
@@ -27,12 +28,12 @@ class AppDrawer extends StatelessWidget {
     final topPadding= MediaQuery.of(context).padding.top;
     final menuItems = [
       _DrawerMenuItem(
-        icon: Icons.home_outlined,
+        iconAsset: AppIcons.drawerHome,
         label: 'Home',
         onTap: () => context.pop(),
       ),
       _DrawerMenuItem(
-        icon: Icons.chat_bubble_outline,
+        iconAsset: AppIcons.drawerMessages,
         label: 'Messages',
         onTap: () {
           context.pop();
@@ -40,12 +41,12 @@ class AppDrawer extends StatelessWidget {
         },
       ),
       _DrawerMenuItem(
-        icon: Icons.list_alt_outlined,
+        iconAsset: AppIcons.drawerTutorBooking,
         label: 'Tutor Bookings',
         onTap: () => context.pop(),
       ),
       _DrawerMenuItem(
-        icon: Icons.menu_book_outlined,
+        iconAsset: AppIcons.drawerCourses,
         label: 'My Courses',
         onTap: () {
           context.pop();
@@ -53,7 +54,7 @@ class AppDrawer extends StatelessWidget {
         },
       ),
       _DrawerMenuItem(
-        icon: Icons.star_outline,
+        iconAsset: AppIcons.drawerRating,
         label: 'Rating & Reviews',
         onTap: () {
           context.pop();
@@ -61,7 +62,7 @@ class AppDrawer extends StatelessWidget {
         },
       ),
       _DrawerMenuItem(
-        icon: Icons.person_outline,
+        iconAsset: AppIcons.drawerProfile,
         label: 'Profile',
         onTap: () {
           context.pop();
@@ -69,7 +70,7 @@ class AppDrawer extends StatelessWidget {
         },
       ),
       _DrawerMenuItem(
-        icon: Icons.logout,
+        iconAsset: AppIcons.drawerLogout,
         label: 'Log Out',
         onTap: () => context.go(AppRoutes.loginPhone),
       ),
@@ -87,13 +88,9 @@ class AppDrawer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                ClipOval(
-                  child: CachedNetworkImage(
-                    imageUrl: AppNetworkImages.currentUserAvatar,
-                    width: 72,
-                    height: 72,
-                    fit: BoxFit.cover,
-                  ),
+                NetworkAvatar(
+                  imageUrl: AppNetworkImages.currentUserAvatar,
+                  size: 72,
                 ),
                 const SizedBox(height: 12),
                 Text('Muhammad Shahin', style: AppTypography.h3SemiBold),
@@ -134,7 +131,15 @@ class AppDrawer extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(item.icon, size: 20, color: AppColors.white),
+                          SvgPicture.asset(
+                            item.iconAsset,
+                            width: 20,
+                            height: 20,
+                            colorFilter: const ColorFilter.mode(
+                              AppColors.white,
+                              BlendMode.srcIn,
+                            ),
+                          ),
                           const SizedBox(width: 12),
                           Text(
                             item.label,

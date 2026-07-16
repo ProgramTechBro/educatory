@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../../config/app_colors.dart';
 import '../../../config/app_typography.dart';
 import '../../../routes/app_routes.dart';
-import '../data/datasources/chat_local_datasource.dart';
+import '../data/datasources/local/chat_local_datasource.dart';
 import 'local_widgets/contact_tile.dart';
 
 class ContactListScreen extends StatelessWidget {

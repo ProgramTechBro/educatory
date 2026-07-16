@@ -27,43 +27,43 @@ class OnboardingBottomPanel extends StatelessWidget {
     final bool showPrevious = currentIndex > 0;
     final double bottomSafeArea = MediaQuery.of(context).padding.bottom;
 
+    final words = title.trim().split(' ');
+    final highlightWord = words.removeLast();
+    final leadingText = words.join(' ');
+
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.fromLTRB(24, 10, 24, 16 + bottomSafeArea),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: AppColors.gradientOnboardingPanel,
-        ),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(24),
-          topRight: Radius.circular(24),
-        ),
-      ),
+      padding: EdgeInsets.fromLTRB(24, 24, 24, 16 + bottomSafeArea),
+      color: AppColors.white,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          if (leadingText.isNotEmpty)
+            Text(
+              leadingText,
+              textAlign: TextAlign.center,
+              style: AppTypography.h2Bold,
+            ),
           Text(
-            title,
+            highlightWord,
             textAlign: TextAlign.center,
-            style: AppTypography.h3SemiBold.copyWith(color: AppColors.accent,fontSize: 20),
+            style: AppTypography.h2Bold.copyWith(color: AppColors.primary),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
           Text(
             subtitle,
             textAlign: TextAlign.center,
             style: AppTypography.bodyLargeRegular.copyWith(
               color: AppColors.neutral600,
-              fontSize: 16
+              fontSize: 16,
             ),
           ),
-          const SizedBox(height: 100),
+          const SizedBox(height: 40),
           OnboardingPageIndicator(
             pageCount: pageCount,
             currentIndex: currentIndex,
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 24),
           Row(
             children: [
               if (showPrevious) ...[

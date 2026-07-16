@@ -4,9 +4,9 @@ import '../../../config/app_colors.dart';
 import '../../../core/shared_widgets/app_button.dart';
 import '../../../routes/app_routes.dart';
 import '../domain/entities/otp_purpose.dart';
-import 'local_widgets/auth_back_button.dart';
+import '../../../core/shared_widgets/auth_back_button.dart';
 import 'local_widgets/auth_header.dart';
-import 'local_widgets/phone_number_field.dart';
+import '../../../core/shared_widgets/phone_number_field.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});

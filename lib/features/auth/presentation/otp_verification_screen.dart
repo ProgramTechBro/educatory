@@ -8,9 +8,9 @@ import '../../../core/blocs/auth/auth_event.dart';
 import '../../../core/shared_widgets/app_button.dart';
 import '../../../routes/app_routes.dart';
 import '../domain/entities/otp_purpose.dart';
-import 'local_widgets/auth_back_button.dart';
-import 'local_widgets/otp_input_row.dart';
-import 'local_widgets/resend_code_text.dart';
+import '../../../core/shared_widgets/auth_back_button.dart';
+import '../../../core/shared_widgets/otp_input_row.dart';
+import '../../../core/shared_widgets/resend_code_text.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
   final OtpPurpose purpose;

@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
+import '../../../../core/shared_widgets/network_avatar.dart';
 import '../../../../core/shared_widgets/rating_stars.dart';
 import '../../domain/entities/tutor_detail_entity.dart';
 
@@ -18,25 +18,7 @@ class TutorReviewTile extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ClipOval(
-              child: review.avatar != null
-                  ? CachedNetworkImage(
-                      imageUrl: review.avatar!,
-                      width: 44,
-                      height: 44,
-                      fit: BoxFit.cover,
-                    )
-                  : Container(
-                      width: 44,
-                      height: 44,
-                      color: AppColors.neutral300,
-                      child: const Icon(
-                        Icons.person,
-                        size: 24,
-                        color: AppColors.white,
-                      ),
-                    ),
-            ),
+            NetworkAvatar(imageUrl: review.avatar, size: 44),
             const SizedBox(width: 8),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
