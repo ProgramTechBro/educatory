@@ -1,10 +1,9 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../../../config/app_colors.dart';
 import '../../../config/app_typography.dart';
+import '../../../core/extensions/context_extension.dart';
 import '../../../core/shared_widgets/app_button.dart';
-import '../../../routes/app_routes.dart';
 
 class PaymentSuccessfulScreen extends StatefulWidget {
   const PaymentSuccessfulScreen({super.key});
@@ -40,7 +39,7 @@ class _PaymentSuccessfulScreenState extends State<PaymentSuccessfulScreen> {
           padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
           child: AppButton(
             label: 'Go to My Courses',
-            onPressed: () => context.go(AppRoutes.myCourses),
+            onPressed: () => context.goToMyCourses(),
           ),
         ),
       ),

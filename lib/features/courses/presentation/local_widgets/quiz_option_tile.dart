@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
-import '../../domain/entities/quiz_question_entity.dart';
 
 class QuizOptionTile extends StatelessWidget {
   final String label;
   final bool isSelected;
-  final QuizQuestionType type;
   final VoidCallback onTap;
 
   const QuizOptionTile({
     super.key,
     required this.label,
     required this.isSelected,
-    required this.type,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final isSingleChoice = type == QuizQuestionType.singleChoice;
-
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(10),
@@ -37,13 +32,7 @@ class QuizOptionTile extends StatelessWidget {
         child: Row(
           children: [
             Icon(
-              isSingleChoice
-                  ? (isSelected
-                      ? Icons.radio_button_checked
-                      : Icons.radio_button_off)
-                  : (isSelected
-                      ? Icons.check_box
-                      : Icons.check_box_outline_blank),
+              isSelected ? Icons.radio_button_checked : Icons.radio_button_off,
               size: 20,
               color: isSelected ? AppColors.primary : AppColors.neutral300,
             ),

@@ -53,6 +53,7 @@ class EnrolledCourseCard extends StatelessWidget {
                     ),
                     PopupMenuButton<EnrolledCourseAction>(
                       padding: EdgeInsets.zero,
+                      position: PopupMenuPosition.under,
                       icon: const Icon(
                         Icons.more_vert,
                         size: 20,

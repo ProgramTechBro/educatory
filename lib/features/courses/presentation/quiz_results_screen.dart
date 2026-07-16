@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../config/app_colors.dart';
 import '../../../config/app_typography.dart';
+import '../../../core/extensions/context_extension.dart';
 import '../../../core/shared_widgets/two_button_bottom_bar.dart';
 import '../../../routes/app_routes.dart';
 import '../domain/entities/quiz_question_entity.dart';
@@ -32,7 +33,7 @@ class QuizResultsScreen extends StatelessWidget {
           extra: {'questions': questions, 'answers': answers},
         ),
         trailingLabel: 'Finish',
-        onTrailingTap: () => context.go(AppRoutes.myCourses),
+        onTrailingTap: () => context.goToMyCourses(),
       ),
       body: Center(
         child: Column(
