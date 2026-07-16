@@ -67,22 +67,25 @@ class ProfileScreen extends StatelessWidget {
                             ProfileMenuItem(
                               icon: Icons.person_outline,
                               label: 'Personal Information',
-                              onTap: () {},
+                              onTap: () => context.push(AppRoutes.personalInfo),
                             ),
                             ProfileMenuItem(
                               icon: Icons.credit_card_outlined,
                               label: 'Payment',
-                              onTap: () {},
+                              onTap: () =>
+                                  context.push(AppRoutes.paymentMethods),
                             ),
                             ProfileMenuItem(
                               icon: Icons.headset_mic_outlined,
                               label: 'Support',
-                              onTap: () {},
+                              onTap: () =>
+                                  context.push(AppRoutes.supportTickets),
                             ),
                             ProfileMenuItem(
                               icon: Icons.shield_outlined,
                               label: 'Login & Security',
-                              onTap: () {},
+                              onTap: () =>
+                                  context.push(AppRoutes.loginSecurity),
                             ),
                           ],
                         ),
@@ -92,12 +95,14 @@ class ProfileScreen extends StatelessWidget {
                             ProfileMenuItem(
                               icon: Icons.description_outlined,
                               label: 'Terms & Conditions',
-                              onTap: () {},
+                              onTap: () =>
+                                  context.push(AppRoutes.termsConditions),
                             ),
                             ProfileMenuItem(
                               icon: Icons.description_outlined,
                               label: 'Privacy Policy',
-                              onTap: () {},
+                              onTap: () =>
+                                  context.push(AppRoutes.privacyPolicy),
                             ),
                           ],
                         ),
@@ -107,7 +112,8 @@ class ProfileScreen extends StatelessWidget {
                             ProfileMenuItem(
                               icon: Icons.person_remove_outlined,
                               label: 'Delete Account',
-                              onTap: () {},
+                              onTap: () =>
+                                  context.push(AppRoutes.deleteAccount),
                               showChevron: false,
                             ),
                             ProfileMenuItem(

@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
+import '../../../../core/shared_widgets/network_avatar.dart';
 import '../../domain/entities/notification_entity.dart';
 
 class NotificationTile extends StatelessWidget {
@@ -62,14 +62,7 @@ class NotificationTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             notification.avatarUrl != null
-                ? ClipOval(
-                    child: CachedNetworkImage(
-                      imageUrl: notification.avatarUrl!,
-                      width: 32,
-                      height: 32,
-                      fit: BoxFit.cover,
-                    ),
-                  )
+                ? NetworkAvatar(imageUrl: notification.avatarUrl, size: 32)
                 : Container(
                     width: 32,
                     height: 32,

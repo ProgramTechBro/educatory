@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
+import '../../../../core/shared_widgets/network_avatar.dart';
 import '../../domain/entities/contact_entity.dart';
 
 class ContactTile extends StatelessWidget {
@@ -20,14 +20,7 @@ class ContactTile extends StatelessWidget {
         children: [
           Stack(
             children: [
-              ClipOval(
-                child: CachedNetworkImage(
-                  imageUrl: contact.avatar,
-                  width: 56,
-                  height: 56,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              NetworkAvatar(imageUrl: contact.avatar, size: 56),
               Positioned(
                 right: 0,
                 bottom: 0,

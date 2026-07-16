@@ -5,7 +5,7 @@ import '../../../core/shared_widgets/app_bottom_sheet.dart';
 import '../../../core/shared_widgets/app_button.dart';
 import '../../../core/shared_widgets/app_text_field.dart';
 import '../../../routes/app_routes.dart';
-import 'local_widgets/auth_back_button.dart';
+import '../../../core/shared_widgets/auth_back_button.dart';
 import 'local_widgets/auth_header.dart';
 import 'local_widgets/linear_stepper.dart';
 

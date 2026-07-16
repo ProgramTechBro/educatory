@@ -41,7 +41,6 @@ class AppColors {
   static const List<Color> gradientGolden = [Color(0xFFCC6002), Color(0xFFFFB532)];
   static const List<Color> gradientIndigo = [Color(0xFF3032A3), Color(0xFF6366F1)];
   static const List<Color> gradientSplashBackground = [Color(0xFFF9F5FF), Color(0xFFD4B4FE)];
-  static const List<Color> gradientOnboardingPanel = [white, purple100];
 
   static const Color chatTimeColor = neutral500;
   static const Color logoWordmark = Color(0xFF131842);

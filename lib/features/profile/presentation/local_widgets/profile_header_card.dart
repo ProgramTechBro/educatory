@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../config/app_assets.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
+import '../../../../core/shared_widgets/network_avatar.dart';
 import '../../../../core/shared_widgets/rating_stars.dart';
 
 class ProfileHeaderCard extends StatelessWidget {
@@ -26,13 +26,9 @@ class ProfileHeaderCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ClipOval(
-                child: CachedNetworkImage(
-                  imageUrl: AppNetworkImages.currentUserAvatar,
-                  width: 60,
-                  height: 60,
-                  fit: BoxFit.cover,
-                ),
+              NetworkAvatar(
+                imageUrl: AppNetworkImages.currentUserAvatar,
+                size: 60,
               ),
               OutlinedButton(
                 onPressed: onChangePhotoTap,

@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
+import '../../../../core/shared_widgets/network_avatar.dart';
 import '../../domain/entities/tutor_entity.dart';
 
 class TutorCard extends StatelessWidget {
@@ -26,14 +26,7 @@ class TutorCard extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ClipOval(
-              child: CachedNetworkImage(
-                imageUrl: tutor.avatar,
-                width: 52,
-                height: 52,
-                fit: BoxFit.cover,
-              ),
-            ),
+            NetworkAvatar(imageUrl: tutor.avatar, size: 52),
             const SizedBox(height: 12),
             Text(
               tutor.name,

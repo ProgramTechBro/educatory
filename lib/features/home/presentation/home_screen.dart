@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../config/app_colors.dart';
 import '../../../routes/app_routes.dart';
-import '../../courses/domain/entities/search_target.dart';
+import '../../search/domain/entities/search_target.dart';
 import '../data/datasources/home_local_datasource.dart';
 import 'local_widgets/app_drawer.dart';
 import 'local_widgets/course_card.dart';

@@ -7,6 +7,14 @@ class AppTypography {
   static const String fontFamily = 'InterTight';
   static const String accentFontFamily = 'Lora';
 
+  static const TextStyle h2Bold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    height: 32 / 24,
+    color: AppColors.neutral900,
+  );
+
   static const TextStyle h3SemiBold = TextStyle(
     fontFamily: fontFamily,
     fontSize: 18,

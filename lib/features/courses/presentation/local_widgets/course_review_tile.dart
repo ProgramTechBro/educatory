@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_typography.dart';
+import '../../../../core/shared_widgets/network_avatar.dart';
 import '../../../../core/shared_widgets/rating_stars.dart';
 import '../../domain/entities/course_review_entity.dart';
 
@@ -18,14 +18,7 @@ class CourseReviewTile extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipOval(
-              child: CachedNetworkImage(
-                imageUrl: review.avatar,
-                width: 44,
-                height: 44,
-                fit: BoxFit.cover,
-              ),
-            ),
+            NetworkAvatar(imageUrl: review.avatar, size: 44),
             const SizedBox(width: 8),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

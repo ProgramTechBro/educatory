@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../config/app_colors.dart';
 import '../../config/app_typography.dart';
 
-enum AppButtonVariant { primary, secondary, outline }
+enum AppButtonVariant { primary, secondary, outline, danger }
 
 class AppButton extends StatelessWidget {
   final String label;
@@ -26,6 +26,8 @@ class AppButton extends StatelessWidget {
         return AppColors.secondaryButtonFill;
       case AppButtonVariant.outline:
         return AppColors.white;
+      case AppButtonVariant.danger:
+        return AppColors.red500;
     }
   }
 
@@ -37,6 +39,8 @@ class AppButton extends StatelessWidget {
         return AppColors.primary;
       case AppButtonVariant.outline:
         return AppColors.neutral300;
+      case AppButtonVariant.danger:
+        return AppColors.red500;
     }
   }
 
@@ -48,6 +52,8 @@ class AppButton extends StatelessWidget {
         return AppColors.primary;
       case AppButtonVariant.outline:
         return AppColors.neutral600;
+      case AppButtonVariant.danger:
+        return AppColors.white;
     }
   }
 

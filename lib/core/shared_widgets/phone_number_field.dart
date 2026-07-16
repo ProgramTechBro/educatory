@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import '../../../../config/app_colors.dart';
-import '../../../../config/app_typography.dart';
+import '../../config/app_colors.dart';
+import '../../config/app_typography.dart';
 
 class PhoneNumberField extends StatelessWidget {
   final ValueChanged<String> onChanged;

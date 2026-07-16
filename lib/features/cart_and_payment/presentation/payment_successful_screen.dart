@@ -7,6 +7,7 @@ import '../../../core/extensions/context_extension.dart';
 import '../../../core/shared_widgets/app_button.dart';
 import '../../../core/shared_widgets/two_button_bottom_bar.dart';
 import '../../../routes/app_routes.dart';
+import '../../chat/data/datasources/local/chat_local_datasource.dart';
 
 class PaymentSuccessfulScreen extends StatefulWidget {
   final bool isSession;
@@ -44,7 +45,13 @@ class _PaymentSuccessfulScreenState extends State<PaymentSuccessfulScreen> {
               leadingLabel: 'Back to Home',
               onLeadingTap: () => context.go(AppRoutes.home),
               trailingLabel: 'Message Robert',
-              onTrailingTap: () => context.go(AppRoutes.contactList),
+              onTrailingTap: () {
+                final robert = ChatLocalDataSource()
+                    .getContacts()
+                    .firstWhere((contact) => contact.id == 'robert-fox');
+                context.go(AppRoutes.home);
+                context.push(AppRoutes.chat, extra: robert);
+              },
             )
           : SafeArea(
               child: Padding(

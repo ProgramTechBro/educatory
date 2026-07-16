@@ -16,34 +16,48 @@ import '../features/cart_and_payment/presentation/payment_successful_screen.dart
 import '../features/chat/domain/entities/contact_entity.dart';
 import '../features/chat/presentation/contact_list_screen.dart';
 import '../features/chat/presentation/messages_screen.dart';
-import '../features/courses/domain/entities/quiz_question_entity.dart';
-import '../features/courses/domain/entities/search_target.dart';
 import '../features/courses/presentation/all_courses_screen.dart';
-import '../features/courses/presentation/all_live_subjects_screen.dart';
 import '../features/courses/presentation/course_detail_screen.dart';
-import '../features/courses/presentation/filter_screen.dart';
-import '../features/courses/presentation/filtered_results_screen.dart';
-import '../features/courses/presentation/my_courses_screen.dart';
-import '../features/courses/presentation/playing_course_screen.dart';
-import '../features/courses/presentation/quiz_answers_screen.dart';
-import '../features/courses/presentation/quiz_results_screen.dart';
-import '../features/courses/presentation/quiz_screen.dart';
-import '../features/courses/presentation/reading_article_screen.dart';
-import '../features/courses/presentation/request_new_subject_screen.dart';
 import '../features/home/presentation/home_screen.dart';
-import '../features/live_tutoring/presentation/incoming_call_screen.dart';
+import '../features/learning/domain/entities/quiz_question_entity.dart';
+import '../features/learning/presentation/my_courses_screen.dart';
+import '../features/learning/presentation/playing_course_screen.dart';
+import '../features/learning/presentation/quiz_answers_screen.dart';
+import '../features/learning/presentation/quiz_results_screen.dart';
+import '../features/learning/presentation/quiz_screen.dart';
+import '../features/learning/presentation/reading_article_screen.dart';
+import '../features/live_tutoring/presentation/all_live_subjects_screen.dart';
 import '../features/live_tutoring/presentation/live_subject_detail_screen.dart';
-import '../features/live_tutoring/presentation/schedule_tutoring_screen.dart';
-import '../features/live_tutoring/presentation/session_fallback_screen.dart';
-import '../features/live_tutoring/presentation/session_processing_screen.dart';
-import '../features/live_tutoring/presentation/session_request_screen.dart';
+import '../features/live_tutoring/presentation/request_new_subject_screen.dart';
 import '../features/live_tutoring/presentation/tutor_detail_screen.dart';
-import '../features/live_tutoring/presentation/video_call_screen.dart';
 import '../features/notifications/presentation/notifications_screen.dart';
 import '../features/onboarding/presentation/onboarding_screen.dart';
 import '../features/profile/domain/entities/review_entity.dart';
+import '../features/profile/domain/entities/support_ticket_entity.dart';
+import '../features/profile/presentation/add_new_card_screen.dart';
+import '../features/profile/presentation/change_password_screen.dart';
+import '../features/profile/presentation/code_verified_screen.dart';
+import '../features/profile/presentation/delete_account_screen.dart';
+import '../features/profile/presentation/login_security_screen.dart';
+import '../features/profile/presentation/payment_methods_screen.dart';
+import '../features/profile/presentation/personal_info_screen.dart';
+import '../features/profile/presentation/privacy_policy_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
 import '../features/profile/presentation/reviews_screen.dart';
+import '../features/profile/presentation/support_ticket_detail_screen.dart';
+import '../features/profile/presentation/support_tickets_screen.dart';
+import '../features/profile/presentation/terms_conditions_screen.dart';
+import '../features/profile/presentation/two_step_verification_screen.dart';
+import '../features/profile/presentation/verify_code_screen.dart';
+import '../features/scheduling/presentation/schedule_tutoring_screen.dart';
+import '../features/search/domain/entities/search_target.dart';
+import '../features/search/presentation/filter_screen.dart';
+import '../features/search/presentation/filtered_results_screen.dart';
+import '../features/session/presentation/incoming_call_screen.dart';
+import '../features/session/presentation/session_fallback_screen.dart';
+import '../features/session/presentation/session_processing_screen.dart';
+import '../features/session/presentation/session_request_screen.dart';
+import '../features/session/presentation/video_call_screen.dart';
 import '../features/splash/presentation/splash_screen.dart';
 import 'app_routes.dart';
 
@@ -243,6 +257,60 @@ class AppPages {
       GoRoute(
         path: AppRoutes.videoCall,
         builder: (context, state) => const VideoCallScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.personalInfo,
+        builder: (context, state) => const PersonalInfoScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.paymentMethods,
+        builder: (context, state) => const PaymentMethodsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.addNewCard,
+        builder: (context, state) => const AddNewCardScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.supportTickets,
+        builder: (context, state) => const SupportTicketsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.supportTicketDetail,
+        builder: (context, state) => SupportTicketDetailScreen(
+          ticket: state.extra as SupportTicketEntity,
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.loginSecurity,
+        builder: (context, state) => const LoginSecurityScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.changePassword,
+        builder: (context, state) => const ChangePasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.twoStepVerification,
+        builder: (context, state) => const TwoStepVerificationScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.verifyCode,
+        builder: (context, state) => const VerifyCodeScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.codeVerified,
+        builder: (context, state) => const CodeVerifiedScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.privacyPolicy,
+        builder: (context, state) => const PrivacyPolicyScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.termsConditions,
+        builder: (context, state) => const TermsConditionsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.deleteAccount,
+        builder: (context, state) => const DeleteAccountScreen(),
       ),
     ],
   );
